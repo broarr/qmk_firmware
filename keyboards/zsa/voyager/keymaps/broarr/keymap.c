@@ -32,9 +32,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void housekeeping_task_user(void) {
     if (!is_transport_connected()) {
         layer_move(5);
-    } else {
-        layer_move(0);
-    }
+    } 
 }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -56,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * │   `   │   Z   │   X   │   C   │   D   │   V   │    │   K   │   H   │   ,   │   .   │   /   │   =   │ *
      * └───────┴───────┴───────┴───────┼───────┼───────┤    ├───────┼───────┼───────┴───────┴───────┴───────┘ *
      *                                 │       │       │    │       │       │                                 *
-     *                                 │  TAB  │ ENTER │    │ SPACE │ BKSP  │                                 *
+     *                                 │ ENTER │  TAB  │    │ BKSP  │ SPACE │                                 *
      *                                 └───────┴───────┘    └───────┴───────┘                                 *
      **********************************************************************************************************/
 
@@ -65,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         CW_TOGG, KC_Q,         KC_W,         KC_F,         KC_P,         KC_B, KC_J, KC_L,           KC_U,         KC_Y,         KC_SCLN,      KC_BSLS,
         KC_LCTL, LGUI_T(KC_A), LALT_T(KC_R), LSFT_T(KC_S), LCTL_T(KC_T), KC_G, KC_M, RCTL_T(KC_N),   RSFT_T(KC_E), RALT_T(KC_I), RGUI_T(KC_O), KC_QUOT,
         KC_GRV,  KC_Z,         KC_X,         KC_C,         KC_D,         KC_V, KC_K, KC_H,           KC_COMMA,     KC_DOT,       KC_SLSH,      KC_EQL,
-                                             LT(1,KC_ENT), CTL_T(KC_TAB),            SFT_T(KC_BSPC), LT(2,KC_SPC)
+                                             LT(2,KC_ENT), LT(1,KC_TAB),            LT(4,KC_BSPC), LT(3,KC_SPC)
     ),
 
     /**********************************************************************************************************
@@ -86,16 +84,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * │       │       │       │       │       │       │    │   1   │   2   │   3   │   .   │   =   │ ENTER │ *
      * └───────┴───────┴───────┴───────┼───────┼───────┤    ├───────┼───────┼───────┴───────┴───────┴───────┘ *
      *                                 │       │       │    │       │       │                                 *
-     *                                 │       │       │    │   0   │       │                                 *
+     *                                 │       │       │    │       │   0   │                                 *
      *                                 └───────┴───────┘    └───────┴───────┘                                 *
      **********************************************************************************************************/
 
     [1] = LAYOUT(
-        KC_F1,  KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,          KC_F7, KC_F8,  KC_F9, KC_F10,  KC_F11,  KC_F12,
-        _______, _______, _______, _______, _______, _______,       KC_7,  KC_8,   KC_9,  KC_MINS, KC_SLSH, KC_DEL,
-        _______, _______, _______, _______, _______, _______,       KC_4,  KC_5,   KC_6,  KC_PLUS, KC_ASTR, KC_BSPC,
-        _______, _______, _______, _______, _______, _______,       KC_1,  KC_2,   KC_3,  KC_DOT,  KC_EQL,  KC_ENT,
-                                            _______, _______,       KC_0,  _______
+        KC_F1,  KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,          KC_F7,    KC_F8,  KC_F9, KC_F10,  KC_F11,  KC_F12,
+        _______, _______, _______, _______, _______, _______,       KC_7,     KC_8,   KC_9,  KC_MINS, KC_SLSH, KC_DEL,
+        _______, _______, _______, _______, _______, _______,       KC_4,     KC_5,   KC_6,  KC_PLUS, KC_ASTR, KC_BSPC,
+        _______, _______, _______, _______, _______, _______,       KC_1,     KC_2,   KC_3,  KC_DOT,  KC_EQL,  KC_ENT,
+                                            _______, _______,       _______,  KC_0
     ),
 
     /**********************************************************************************************************
