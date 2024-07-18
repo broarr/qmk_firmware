@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
+#define BILATERAL_COMBINATIONS
 
 enum custom_keycodes {
     UP_DIR = SAFE_RANGE,
@@ -32,7 +33,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void housekeeping_task_user(void) {
     if (!is_transport_connected()) {
         layer_move(5);
-    } 
+    }
 }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
