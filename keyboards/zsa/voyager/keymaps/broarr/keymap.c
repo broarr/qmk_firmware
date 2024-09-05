@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
-#define BILATERAL_COMBINATIONS
 
 enum custom_keycodes {
     UP_DIR = SAFE_RANGE,
@@ -17,7 +16,7 @@ enum tap_dance_keycodes {
 
 tap_dance_action_t tap_dance_actions[] = {
     [EQ_LAYER0] = ACTION_TAP_DANCE_LAYER_MOVE(KC_EQL, 0),
-    [EQ_LAYER5] = ACTION_TAP_DANCE_LAYER_MOVE(KC_EQL, 5),
+    [EQ_LAYER5] = ACTION_TAP_DANCE_LAYER_MOVE(KC_GRV, 5),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -73,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,  KC_1,         KC_2,         KC_3,         KC_4,         KC_5, KC_6, KC_7,           KC_8,         KC_9,         KC_0,         KC_MINS,
         KC_TAB, KC_Q,         KC_W,         KC_F,         KC_P,         KC_B, KC_J, KC_L,           KC_U,         KC_Y,         KC_SCLN,      KC_BSLS,
         CW_TOGG, LGUI_T(KC_A), LALT_T(KC_R), LSFT_T(KC_S), LCTL_T(KC_T), KC_G, KC_M, RCTL_T(KC_N),   RSFT_T(KC_E), RALT_T(KC_I), RGUI_T(KC_O), KC_QUOT,
-        KC_GRV,  KC_Z,         KC_X,         KC_C,         KC_D,         KC_V, KC_K, KC_H,KC_COMMA,KC_DOT,KC_SLSH,TD(EQ_LAYER5),
+        TD(EQ_LAYER5),  KC_Z,         KC_X,         KC_C,         KC_D,         KC_V, KC_K, KC_H,KC_COMMA,KC_DOT,KC_SLSH,KC_EQL,
                                              LT(2,KC_ENT), LT(1,KC_TAB),            LT(4,KC_BSPC), LT(3,KC_SPC)
     ),
 
