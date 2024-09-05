@@ -10,6 +10,16 @@ enum custom_keycodes {
     FAT_ARR,
 };
 
+enum tap_dance_keycodes {
+    EQ_LAYER0,
+    EQ_LAYER5,
+};
+
+tap_dance_action_t tap_dance_actions[] = {
+    [EQ_LAYER0] = ACTION_TAP_DANCE_LAYER_MOVE(KC_EQL, 0),
+    [EQ_LAYER5] = ACTION_TAP_DANCE_LAYER_MOVE(KC_EQL, 5),
+};
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
     case UP_DIR:
@@ -63,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,  KC_1,         KC_2,         KC_3,         KC_4,         KC_5, KC_6, KC_7,           KC_8,         KC_9,         KC_0,         KC_MINS,
         KC_TAB, KC_Q,         KC_W,         KC_F,         KC_P,         KC_B, KC_J, KC_L,           KC_U,         KC_Y,         KC_SCLN,      KC_BSLS,
         CW_TOGG, LGUI_T(KC_A), LALT_T(KC_R), LSFT_T(KC_S), LCTL_T(KC_T), KC_G, KC_M, RCTL_T(KC_N),   RSFT_T(KC_E), RALT_T(KC_I), RGUI_T(KC_O), KC_QUOT,
-        KC_GRV,  KC_Z,         KC_X,         KC_C,         KC_D,         KC_V, KC_K, KC_H,           KC_COMMA,     KC_DOT,       KC_SLSH,      KC_EQL,
+        KC_GRV,  KC_Z,         KC_X,         KC_C,         KC_D,         KC_V, KC_K, KC_H,KC_COMMA,KC_DOT,KC_SLSH,TD(EQ_LAYER5),
                                              LT(2,KC_ENT), LT(1,KC_TAB),            LT(4,KC_BSPC), LT(3,KC_SPC)
     ),
 
@@ -136,13 +146,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * │       │       │       │       │       │       │    │       │       │       │       │       │       │ *
      * ├───────┼───────┼───────┼───────┼───────┼───────┤    ├───────┼───────┼───────┼───────┼───────┼───────┤ *
      * │       │       │       │       │       │       │    │       │       │       │       │       │       │ *
-     * │       │       │       │       │       │       │    │       │       │       │       │       │       │ *
+     * │       │       │       │       │       │       │    │       │ HOME  │  PGUP │       │       │       │ *
      * ├───────┼───────┼───────┼───────┼───────┼───────┤    ├───────┼───────┼───────┼───────┼───────┼───────┤ *
      * │       │       │       │       │       │       │    │       │   |   │   ^   │       │       │       │ *
      * │       │       │       │       │       │       │    │  <--  │   v   │   |   │  -->  │       │       │ *
      * ├───────┼───────┼───────┼───────┼───────┼───────┤    ├───────┼───────┼───────┼───────┼───────┼───────┤ *
      * │       │       │       │       │       │       │    │       │       │       │       │       │       │ *
-     * │       │       │       │       │       │       │    │       │       │       │       │       │       │ *
+     * │       │       │       │       │       │       │    │       │  END  │  PGDN │       │       │       │ *
      * └───────┴───────┴───────┴───────┼───────┼───────┤    ├───────┼───────┼───────┴───────┴───────┴───────┘ *
      *                                 │       │       │    │       │       │                                 *
      *                                 │       │       │    │       │       │                                 *
@@ -210,10 +220,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      **********************************************************************************************************/
 
     [5] = LAYOUT(
-        KC_ESC,  KC_1, KC_2, KC_3, KC_4,    KC_5,                      _______, _______, _______, _______, _______, _______,
-        KC_TAB,  KC_Q, KC_W, KC_E, KC_R,    KC_T,                      _______, _______, _______, _______, _______, _______,
-        KC_LCTL, KC_A, KC_S, KC_D, KC_F,    KC_G,                      _______, _______, _______, _______, _______, _______,
-        KC_LSFT, KC_Z, KC_X, KC_C, KC_V,    KC_B,                      _______, _______, _______, _______, _______, _______,
+        KC_ESC,  KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS,
+        KC_TAB, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
+        KC_LCTL,KC_A, KC_S, KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+        KC_LSFT, KC_Z,KC_X, KC_C,    KC_V,    KC_B,                         KC_N,    KC_M,    KC_COMMA,KC_DOT,  KC_SLSH,TD(EQ_LAYER0),
                                    KC_SPC,  _______,          _______, _______
     ),
 };
